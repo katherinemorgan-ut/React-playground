@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+// import Car from './Car.js'
 
 
 // 1a) Creates a root for the first element
@@ -57,19 +58,23 @@ import ReactDOM from 'react-dom/client';
 // root.render(<Car color="red"/>)
 
 
-//3c Components in components 
-function Car() {
-  return <h2>I am a Car!</h2>
+//2d Components in components - Garage component contains Car
+function Car(props) {
+  return <h2>I am a {props.brand}!</h2>
 }
 
 function Garage() {
   return (
     <>
     <h1>Who lives in my Garage?</h1>
-    <Car />
+    <Car brand="Ford"/>
     </>
   )
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Garage />);
+
+//3a Importing components from other files
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(<Car />);
