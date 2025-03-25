@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+// import Car from './Car.js'
 
 
 // 1a) Creates a root for the first element
@@ -55,7 +56,6 @@ import ReactDOM from 'react-dom/client';
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(<Car color="red"/>)
-
 
 //3a Components in components 
 // function Car() {
@@ -203,13 +203,19 @@ function Garage() {
     {id: 3, brand: 'Audi'}];
   return (
     <>
+
       <h1> Who lives in my garage?</h1>
       <ul>
         {cars.map((car) => <Car key={car.id} brand={car.brand} />)}
       </ul>
+
     </>
   )
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Garage />);
+
+//3a Importing components from other files
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(<Car />);
