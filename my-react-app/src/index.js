@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 // import Car from './Car.js'
+import { useState } from 'react';
 
 
 // 1a) Creates a root for the first element
@@ -192,30 +193,121 @@ import ReactDOM from 'react-dom/client';
 
 
 //6a React Lists
-function Car(props) {
-  return <li>I am a {props.brand}</li>;
-}
+// function Car(props) {
+//   return <li>I am a {props.brand}</li>;
+// }
 
-function Garage() {
-  const cars = [
-    {id: 1, brand: 'Ford'},
-    {id: 2, brand: 'Toyota'}, 
-    {id: 3, brand: 'Audi'}];
+// function Garage() {
+//   const cars = [
+//     {id: 1, brand: 'Ford'},
+//     {id: 2, brand: 'Toyota'}, 
+//     {id: 3, brand: 'Audi'}];
+//   return (
+//     <>
+
+//       <h1> Who lives in my garage?</h1>
+//       <ul>
+//         {cars.map((car) => <Car key={car.id} brand={car.brand} />)}
+//       </ul>
+
+//     </>
+//   )
+// }
+
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(<Garage />);
+
+
+//7a React Forms
+// function MyForm() {
+//   const [username, setName] = useState("");
+
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+//     alert(`The name you entered was: ${username}`)
+//   }
+
+
+// return (
+//   <form onSubmit={handleSubmit}> 
+//     <label>Enter your name:
+//       <input 
+//       type="text"
+//       value={ username }
+//       onChange={(e) => setName(e.target.value)}
+//       />
+//     </label>
+//     <input type="submit" />
+//   </form>
+// )
+// }
+
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(<MyForm />);
+
+
+
+//7b React Forms with Multiple Inputs
+// function MyForm() {
+//   const [inputs, setInputs] = useState({});
+
+// // This is the main event handler that handles all value changes (recommend way)
+//   const handleChange = (event) => {
+//     const name = event.target.name;
+//     const value = event.target.value;
+//     setInputs(values => ({...values, [name]: value}))
+//   }
+
+//   const handleSubmit= (event) => {
+//     event.preventDefault();
+//     alert(inputs);
+//   }
+
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <label>Enter your name:
+//       <input
+//         type="text"
+//         name="username"
+//         value={inputs.username || ""}
+//         onChange={handleChange}
+//       />
+//       </label>
+//       <label>Enter your age:
+//         <input 
+//         type="number"
+//         name="age"
+//         value={inputs.age || ""}
+//         onChange={handleChange}
+//         />
+//       </label>
+//       <input type="submit"/>
+//     </form>
+//   )
+// }
+
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(<MyForm />);
+
+
+//7c React Select
+function MyForm() {
+  const [myCar, setMyCar] = useState("Volvo");
+
+  const handleChange = (event) => {
+    setMyCar(event.target.value)
+  }
+
   return (
-    <>
-
-      <h1> Who lives in my garage?</h1>
-      <ul>
-        {cars.map((car) => <Car key={car.id} brand={car.brand} />)}
-      </ul>
-
-    </>
+    <form>
+      <select value={myCar} onChange={handleChange}>
+        <option value="Ford">Ford</option>
+        <option value="Volvo">Volvo</option>
+        <option value="Fiat">Fiat</option>
+      </select>
+    </form>
   )
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Garage />);
-
-//3a Importing components from other files
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(<Car />);
+root.render(<MyForm />);
